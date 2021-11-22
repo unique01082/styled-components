@@ -1,10 +1,11 @@
 {
   "name": "@baolq/styled-components",
-  "version": "6.0.0-alpha",
+  "version": "6.1.0",
   "description": "Visual primitives for the component age. Use the best bits of ES6 and CSS to style your apps without stress",
   "main": "dist/styled-components.cjs.js",
   "module": "dist/styled-components.esm.js",
   "react-native": "native/dist/styled-components.native.cjs.js",
+  "types": "dist/dist/index.d.ts",
   "browser": {
     "./dist/styled-components.esm.js": "./dist/styled-components.browser.esm.js",
     "./dist/styled-components.cjs.js": "./dist/styled-components.browser.cjs.js"
