@@ -74,7 +74,10 @@ function useStyledComponentImpl(
     if (key[0] === '$' || key === 'as') continue;
     else if (key === 'forwardedAs') {
       propsForElement.as = computedProps[key];
-    } else if (!shouldForwardProp || shouldForwardProp(key, validAttr, elementToBeCreated)) {
+    } else if (
+      !shouldForwardProp ||
+      shouldForwardProp(key, computedProps, validAttr, elementToBeCreated)
+    ) {
       propsForElement[key] = computedProps[key];
     }
   }
