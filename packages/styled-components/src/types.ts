@@ -66,6 +66,7 @@ export interface Stringifier {
 
 export type ShouldForwardProp = (
   prop: string,
+  props: ExtensibleObject,
   isValidAttr: (prop: string) => boolean,
   elementToBeCreated?: WebTarget | NativeTarget
 ) => boolean;

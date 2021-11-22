@@ -139,7 +139,7 @@ function useStyledComponentImpl(
       propsForElement.as = computedProps[key];
     } else if (
       shouldForwardProp
-        ? shouldForwardProp(key, validAttr, elementToBeCreated)
+        ? shouldForwardProp(key, computedProps, validAttr, elementToBeCreated)
         : isTargetTag
         ? validAttr(key)
         : true
