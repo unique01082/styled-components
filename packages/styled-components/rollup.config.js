@@ -12,18 +12,11 @@ import pkg from './package.json';
  * automatically will replace it otherwise in the downstream build.
  */
 
-const cjs = {
-  exports: 'named',
-  format: 'cjs',
-  sourcemap: true,
-};
-
 const esm = {
   format: 'esm',
   sourcemap: true,
 };
 
-const getCJS = override => ({ ...cjs, ...override });
 const getESM = override => ({ ...esm, ...override });
 
 const commonPlugins = [
@@ -100,10 +93,7 @@ const standaloneProdConfig = {
 
 const serverConfig = {
   ...configBase,
-  output: [
-    getESM({ file: 'dist/styled-components.esm.js' }),
-    getCJS({ file: 'dist/styled-components.cjs.js' }),
-  ],
+  output: [getESM({ file: 'dist/styled-components.esm.js' })],
   plugins: configBase.plugins.concat(
     replace({
       window: undefined,
@@ -115,10 +105,7 @@ const serverConfig = {
 
 const browserConfig = {
   ...configBase,
-  output: [
-    getESM({ file: 'dist/styled-components.browser.esm.js' }),
-    getCJS({ file: 'dist/styled-components.browser.cjs.js' }),
-  ],
+  output: [getESM({ file: 'dist/styled-components.browser.esm.js' })],
   plugins: configBase.plugins.concat(
     replace({
       __SERVER__: JSON.stringify(false),
@@ -131,9 +118,6 @@ const nativeConfig = {
   ...configBase,
   input: './src/native/index.ts',
   output: [
-    getCJS({
-      file: 'native/dist/styled-components.native.cjs.js',
-    }),
     getESM({
       file: 'native/dist/styled-components.native.esm.js',
     }),
@@ -143,12 +127,7 @@ const nativeConfig = {
 const primitivesConfig = {
   ...configBase,
   input: './src/primitives/index.ts',
-  output: [
-    getESM({ file: 'primitives/dist/styled-components-primitives.esm.js' }),
-    getCJS({
-      file: 'primitives/dist/styled-components-primitives.cjs.js',
-    }),
-  ],
+  output: [getESM({ file: 'primitives/dist/styled-components-primitives.esm.js' })],
   plugins: configBase.plugins.concat(
     replace({
       __SERVER__: JSON.stringify(true),
@@ -158,10 +137,7 @@ const primitivesConfig = {
 
 const macroConfig = Object.assign({}, configBase, {
   input: './src/macro/index.ts',
-  output: [
-    getESM({ file: 'dist/styled-components-macro.esm.js' }),
-    getCJS({ file: 'dist/styled-components-macro.cjs.js' }),
-  ],
+  output: [getESM({ file: 'dist/styled-components-macro.esm.js' })],
   plugins: configBase.plugins.concat(
     replace({
       __SERVER__: JSON.stringify(false),
